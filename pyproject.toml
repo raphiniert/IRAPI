@@ -12,6 +12,9 @@ fastapi = "^0.95.0"
 sqlalchemy = "^2.0.9"
 uvicorn = "^0.22.0"
 python-dotenv = "^1.0.0"
+asyncpg = "^0.27.0"
+rich = "^13.3.5"
+flake8 = "^6.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -23,8 +26,8 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 89
+line-length = 90
 target-version = ['py311']
 
 [tool.flake8]
-max-line-length = 89
+max-line-length = 90
