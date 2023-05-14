@@ -1,3 +1,10 @@
 *.pyc
 
+# virtual environment
 venv/
+
+# docker volume mounts
+data/
+
+# project sepecific
+.env
