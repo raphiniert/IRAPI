@@ -24,6 +24,7 @@ fastapi server receiving, managing and sending ir signals
     ├── .pre-commit-config.yml    # pre commit config
     ├── compose.yml               # docker compose fastpi and postgres
     ├── Dockerfile                # py3.11 alpine base image
+    ├── IRServer.code-worksapce   # vscode workspace
     ├── poetry.lock               # poetry lockfile
     ├── pyproject.toml            # dependencies and settings
     ├── README.md                 # this readme file
