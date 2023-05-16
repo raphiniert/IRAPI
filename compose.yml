@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+      args:
+        PROJECT_NAME: ${PROJECT_NAME}
+    command: /srv/${PROJECT_NAME}/start.sh
+    depends_on:
+      - db
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/srv/${PROJECT_NAME}
+
+  db:
+    image: postgres:15-alpine
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
