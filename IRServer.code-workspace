@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "./venv/bin/python",
+		"files.exclude": {
+			".vscode": true,
+			"venv": true,
+			"**__pycache__**": true
+		},
+		"python.formatting.provider": "black",
+		"python.linting.enabled": true,
+		"[python]": {
+			"editor.formatOnSave": true,
+		},
+	}
+}
