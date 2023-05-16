@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from api.db.models import IRDevice
-from api import schemas
+from api import schemes
 
 logger = logging.getLogger("irserver")
 
@@ -22,7 +22,7 @@ async def get_devices(db: AsyncSession):
     return result.scalars().all()
 
 
-async def create_device(db: AsyncSession, device: schemas.IRDeviceCreate):
+async def create_device(db: AsyncSession, device: schemes.IRDeviceCreate):
     obj_in_data = jsonable_encoder(device)
     new_device = IRDevice(**obj_in_data)
     db.add(new_device)
@@ -31,7 +31,7 @@ async def create_device(db: AsyncSession, device: schemas.IRDeviceCreate):
     return new_device
 
 
-async def update_device(db: AsyncSession, device: schemas.IRDeviceUpdate):
+async def update_device(db: AsyncSession, device: schemes.IRDeviceUpdate):
     db_device = await get_device(db=db, device_id=device.id)
     for field, value in device:
         setattr(db_device, field, value)

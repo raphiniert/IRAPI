@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from api.db.models import IRSignal
-from api import schemas
+from api import schemes
 
 logger = logging.getLogger("irserver")
 
@@ -22,7 +22,7 @@ async def get_signals(db: AsyncSession):
     return result.scalars().all()
 
 
-async def create_signal(db: AsyncSession, signal: schemas.IRSignalCreate):
+async def create_signal(db: AsyncSession, signal: schemes.IRSignalCreate):
     obj_in_data = jsonable_encoder(signal)
     new_signal = IRSignal(**obj_in_data)
     db.add(new_signal)
@@ -31,7 +31,7 @@ async def create_signal(db: AsyncSession, signal: schemas.IRSignalCreate):
     return new_signal
 
 
-async def update_signal(db: AsyncSession, signal: schemas.IRSignal):
+async def update_signal(db: AsyncSession, signal: schemes.IRSignal):
     db_signal = await get_signal(db=db, signal_id=signal.id)
     for field, value in signal:
         setattr(db_signal, field, value)
