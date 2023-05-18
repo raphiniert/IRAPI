@@ -10,8 +10,6 @@ from sqlalchemy.orm import (
 )
 from typing import List
 
-# from api.database import Base
-
 
 class Base(MappedAsDataclass, DeclarativeBase):
     pass
