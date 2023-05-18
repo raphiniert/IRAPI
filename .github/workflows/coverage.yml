@@ -25,7 +25,6 @@ jobs:
         image: postgres:15-alpine
         # Provide the password for postgres
         env:
-          POSTGRES_SERVER: db
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: irserver
@@ -36,6 +35,10 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
 
     steps:
     - name: Check out repository code
@@ -49,7 +52,7 @@ jobs:
         coverage run -m pytest
       env:
         # The hostname used to communicate with the PostgreSQL service container
-        POSTGRES_SERVER: db
+        POSTGRES_SERVER: localhost
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: irserver
