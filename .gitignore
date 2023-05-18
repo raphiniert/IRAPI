@@ -8,3 +8,9 @@ data/
 
 # project sepecific
 .env
+
+## Unit test / coverage reports
+htmlcov/
+.coverage
+.hypothesis/
+.pytest_cache/
