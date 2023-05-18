@@ -7,7 +7,6 @@ services:
       target: dev
       args:
         PROJECT_NAME: ${PROJECT_NAME}
-    command: /srv/${PROJECT_NAME}/start.sh
     depends_on:
       - db
     env_file:
