@@ -52,7 +52,7 @@ jobs:
         coverage run -m pytest
       env:
         # The hostname used to communicate with the PostgreSQL service container
-        POSTGRES_SERVER: localhost
+        POSTGRES_SERVER: postgres
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: irserver
