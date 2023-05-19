@@ -64,6 +64,13 @@ POSTGRES_PASSWORD=replace-w/-very-secure-password
 POSTGRES_DB=irserver
 POSTGRES_PORT=5432
 
+# authentication
+# run openssl genpkey -algorithm ed25519 -out private_key.pem
+PASETO_PRIVATE_KEY="conent of private_key.pem"
+openssl pkey -in private_key.pem -pubout -out public_key.pem
+PASETO_PUBLIC_KEY="content of public_key.pem"
+ACCESS_TOKEN_EXPIRE_SECONDS=3600
+
 # timezone
 TZ=Europe/Vienna
 ```
