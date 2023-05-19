@@ -52,3 +52,38 @@ class IRSignalUpdate(IRSignalBase):
 class IRSignal(IRSignalUpdate):
     created_at: datetime
     modified_at: datetime
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: str | None = None
+
+
+class UserBase(BaseModel):
+    email: str | None = None
+    is_active: bool | None = None
+
+
+class UserDelete(BaseModel):
+    message: str
+
+
+class UserCreate(UserBase):
+    password: str
+
+
+class UserUpdate(UserCreate):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+class User(UserBase):
+    id: int
+    created_at: datetime
+    modified_at: datetime
