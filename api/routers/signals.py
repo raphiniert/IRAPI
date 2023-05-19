@@ -52,7 +52,6 @@ async def patch_signal(
 ):
     if signal_id != signal.id:
         raise HTTPException(status_code=400, detail="IRSignal id's not matching")
-    signal = await get_signal(db=db, signal_id=signal_id)
     return await update_signal(db=db, signal=signal)
 
 
