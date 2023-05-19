@@ -51,3 +51,20 @@ class IRSignal(Base):
     modified_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=func.now(), onupdate=func.now()
     )
+
+
+class User(Base):
+    # Table settings
+    __tablename__ = "users"
+
+    # Columns
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    email: Mapped[str] = mapped_column(nullable=False, unique=True)
+    hashed_password: Mapped[str] = mapped_column(nullable=False)
+    is_active: Mapped[bool] = mapped_column(nullable=False, default=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=func.now()
+    )
+    modified_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=func.now(), onupdate=func.now()
+    )
