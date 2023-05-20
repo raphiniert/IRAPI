@@ -25,6 +25,7 @@ router = APIRouter(
         403: {"description": "Forbidden"},
         404: {"description": "Not found"},
         405: {"description": "Method not Allowed"},
+        422: {"description": "Unprocessable Entity"},
     },
 )
 
