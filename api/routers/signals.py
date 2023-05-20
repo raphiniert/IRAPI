@@ -21,6 +21,7 @@ router = APIRouter(
         403: {"description": "Forbidden"},
         404: {"description": "Not found"},
         405: {"description": "Method not Allowed"},
+        422: {"description": "Unprocessable Entity"},
     },
 )
 
@@ -48,7 +49,7 @@ async def create_new_signal(
 
 @router.patch("/{signal_id}", response_model=schemes.IRSignal)
 async def patch_signal(
-    signal_id: int, signal: schemes.IRSignal, db: AsyncSession = Depends(get_db)
+    signal_id: int, signal: schemes.IRSignalUpdate, db: AsyncSession = Depends(get_db)
 ):
     if signal_id != signal.id:
         raise HTTPException(status_code=400, detail="IRSignal id's not matching")
