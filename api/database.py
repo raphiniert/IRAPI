@@ -1,5 +1,6 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import NullPool
 
 from api.core.config import settings
 
@@ -9,7 +10,8 @@ DATABASE_URL = (
     f"@{settings.db_server}:{settings.db_port}/{settings.db_db}"
 )
 
-async_engine = create_async_engine(DATABASE_URL)
+# https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html#using-multiple-asyncio-event-loops
+async_engine = create_async_engine(DATABASE_URL, poolclass=NullPool)
 
 AsyncSessionLocal = sessionmaker(
     async_engine, class_=AsyncSession, expire_on_commit=False
