@@ -41,10 +41,12 @@ def create_app() -> FastAPI:
         prefix=settings.router_prefix,
     )
 
-    from api.routers import devices, signals
+    from api.routers import auth, devices, signals, users
 
+    router.include_router(auth.router, prefix=settings.router_version_prefix)
     router.include_router(devices.router, prefix=settings.router_version_prefix)
     router.include_router(signals.router, prefix=settings.router_version_prefix)
+    router.include_router(users.router, prefix=settings.router_version_prefix)
     app.include_router(router)
 
     return app
