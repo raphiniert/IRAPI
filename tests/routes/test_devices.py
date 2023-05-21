@@ -10,6 +10,7 @@ from starlette.status import (
     # HTTP_403_FORBIDDEN,
     HTTP_404_NOT_FOUND,
     # HTTP_405_METHOD_NOT_ALLOWED,
+    # HTTP_422_UNPROCESSABLE_ENTITY
 )
 
 TZ = ZoneInfo("Europe/Vienna")
