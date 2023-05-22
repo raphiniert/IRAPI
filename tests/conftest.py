@@ -1,9 +1,40 @@
 import asyncio
+import logging
 import pytest
 
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from httpx import AsyncClient
-from typing import AsyncGenerator, Generator
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
+from typing import Generator
+from api.core.config import settings
+
+logger = logging.getLogger("irapi")
+
+DATABASE_URL = (
+    f"postgresql+asyncpg://{settings.db_user}:{settings.db_password.get_secret_value()}"
+    f"@{settings.db_server}:{settings.db_port}/{settings.db_db}"
+)
+
+async_engine = create_async_engine(DATABASE_URL, poolclass=NullPool)
+
+TestingSessionLocal = async_sessionmaker(async_engine, expire_on_commit=False)
+
+
+@asynccontextmanager
+@pytest.fixture(scope="function")
+async def get_testing_session():
+    async with TestingSessionLocal() as db:
+        try:
+            yield db
+            # await db.commit()
+        except:
+            logger.warning("DB operation failed, trying to auto-rollback.")
+            await db.rollback()
+            raise
+        finally:
+            await db.close()
 
 
 @pytest.fixture(scope="session")
@@ -39,6 +70,6 @@ def anyio_backend():
 
 
 @pytest.fixture(scope="module")
-async def async_client(app: FastAPI) -> AsyncGenerator:
+async def async_client(app: FastAPI) -> AsyncClient:
     async with AsyncClient(app=app, base_url="http://test") as ac:
         yield ac
