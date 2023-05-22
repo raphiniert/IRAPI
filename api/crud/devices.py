@@ -7,7 +7,7 @@ from sqlalchemy import select
 from api.db.models import IRDevice
 from api import schemes
 
-logger = logging.getLogger("irserver")
+logger = logging.getLogger("irapi")
 
 
 async def get_device(db: AsyncSession, device_id: int):

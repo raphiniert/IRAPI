@@ -7,7 +7,7 @@ from sqlalchemy import select
 from api.db.models import IRSignal
 from api import schemes
 
-logger = logging.getLogger("irserver")
+logger = logging.getLogger("irapi")
 
 
 async def get_signal(db: AsyncSession, signal_id: int):

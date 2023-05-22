@@ -15,7 +15,7 @@ logging.basicConfig(
     handlers=[RichHandler()],
 )
 
-logger = logging.getLogger("irserver")
+logger = logging.getLogger("irapi")
 
 
 def create_app() -> FastAPI:

@@ -1,6 +1,6 @@
 FROM python:3.11-alpine as base
 
-ARG PROJECT_NAME irserver
+ARG PROJECT_NAME irapi
 
 # set environment variables
 # prevent python from writing *.pyc files

@@ -14,7 +14,7 @@ from api.crud.devices import (
 )
 from api.database import get_db
 
-logger = logging.getLogger("irserver")
+logger = logging.getLogger("irapi")
 
 router = APIRouter(
     prefix="/devices",

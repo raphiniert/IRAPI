@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "irserver"
+name = "irapi"
 version = "0.1.0"
 description = "fastapi server receiving, managing and sending ir signals"
 authors = ["raphiniert <dev@raphiniert.eu>"]

@@ -39,8 +39,8 @@ fastapi server receiving, managing and sending ir signals
 
 ### Clone repo
 ```shell script
-git clone https://github.com/raphiniert/irserver.git
-cd irserver
+git clone https://github.com/raphiniert/irapi.git
+cd irapi
 ```
 
 ### Create virtual env
@@ -55,13 +55,13 @@ pip install poetry
 
 ```env
 # project specific
-PROJECT_NAME=irserver
+PROJECT_NAME=irapi
 
 # Postgres
 POSTGRES_SERVER=db
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=replace-w/-very-secure-password
-POSTGRES_DB=irserver
+POSTGRES_DB=irapi
 POSTGRES_PORT=5432
 
 # authentication
