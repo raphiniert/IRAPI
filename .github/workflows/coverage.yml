@@ -57,3 +57,7 @@ jobs:
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: irapi
         POSTGRES_PORT: 5432
+        # authentication
+        PASETO_PRIVATE_KEY: ${{ secrets.PASETO_PRIVATE_KEY }}
+        PASETO_PUBLIC_KEY: ${{ secrets.PASETO_PUBLIC_KEY }}
+        ACCESS_TOKEN_EXPIRE_SECONDS: 3600
