@@ -13,6 +13,8 @@ from starlette.status import (
     # HTTP_422_UNPROCESSABLE_ENTITY
 )
 
+from api.core.security import create_access_token
+
 TZ = ZoneInfo("Europe/Vienna")
 
 
@@ -40,6 +42,17 @@ async def test_create_new_user(async_client) -> None:
 
 @pytest.mark.anyio
 async def test_read_users_authenticated(async_client) -> None:
-    res = await async_client.get("/api/v1/users", follow_redirects=True)
+    access_token = create_access_token(data={"email": "testuser@test.test"})  # bytestr
+    res = await async_client.get(
+        "/api/v1/users",
+        headers={
+            "Authorization": f"Bearer {access_token.decode('utf-8')}",
+        },
+        follow_redirects=True,
+    )
     assert res.status_code == HTTP_200_OK
-    assert res.json() == [{"email": "testuser@test.test", "id": 1, "is_active": True}]
+    assert len(res.json()) == 1
+    res_json = res.json()[0]
+    del res_json["created_at"]
+    del res_json["modified_at"]
+    assert res_json == {"email": "testuser@test.test", "id": 1, "is_active": True}
