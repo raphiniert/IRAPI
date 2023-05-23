@@ -11,18 +11,26 @@ fastapi server receiving, managing and sending ir signals
     .
     ├── api                       # fastapi app
     │   ├── core                  # core config
-    │   │   └── config.py         # load settings from .env
+    │   │   ├── config.py         # load settings from .env
+    │   │   └── security.py       # load keys, create tokens
     │   ├── crud                  # crud operations
     │   │   ├── devices.py        # device crud operations
-    │   │   └── signals.py        # signal crud operations
+    │   │   ├── signals.py        # signal crud operations
+    │   │   └── users.py          # user crud operations
     │   ├── db                    # database
     │   │   └── models.py         # db models
     │   ├── routers               # object endpoints
+    │   │   ├── auth.py           # auth endpoints
     │   │   ├── devices.py        # device endpoints
-    │   │   └── signals.py        # signal endpoints
+    │   │   ├── signals.py        # signal endpoints
+    │   │   └── users.py          # user crud operations
     │   ├─- __init__.py           # create and config app
     │   ├─- database.py           # create async db session
     │   └─- schemes.py            # pydantic schemes
+    ├── test                      # fastapi app
+    │   ├── auth                  # auth tests
+    │   ├── routes                # route tests
+    │   └─- conftest.py           # setup fixutres
     ├── .env                      # environment variables
     ├── .gitignore                # .gitignore file
     ├── .pre-commit-config.yml    # pre commit config
