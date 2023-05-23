@@ -2,7 +2,7 @@ import json
 import pyseto
 
 from argon2 import PasswordHasher
-from pyseto import Key
+from pyseto import Key, Token
 
 from api.core.config import settings
 
@@ -24,7 +24,7 @@ def create_access_token(data: dict) -> bytes:
     return token
 
 
-def decode_token(token):
+def decode_token(token) -> Token:
     return pyseto.decode(public_key, token, deserializer=json)
 
 
