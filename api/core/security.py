@@ -13,7 +13,7 @@ private_key = Key.new(4, "public", settings.private_key_pem.get_secret_value())
 public_key = Key.new(4, "public", settings.public_key_pem.get_secret_value())
 
 
-def create_access_token(data: dict):
+def create_access_token(data: dict) -> bytes:
     token = pyseto.encode(
         private_key,
         payload=data,
