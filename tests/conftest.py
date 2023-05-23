@@ -47,7 +47,6 @@ def event_loop() -> Generator:
 @pytest.fixture(scope="module")
 async def app() -> FastAPI:
     from api import create_app
-    from api.database import async_engine
     from api.db.models import Base
 
     app = create_app()

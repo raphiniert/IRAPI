@@ -12,7 +12,7 @@ from api.crud.users import (
     get_users,
     update_user,
 )
-from api.database import get_db
+from api.db import get_db
 from api.routers.auth import get_current_active_user
 
 logger = logging.getLogger("irapi")

@@ -10,7 +10,7 @@ from api.crud.signals import (
     get_signals,
     update_signal,
 )
-from api.database import get_db
+from api.db import get_db
 
 router = APIRouter(
     prefix="/signals",

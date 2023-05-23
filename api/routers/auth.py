@@ -16,7 +16,7 @@ from api.core.security import (
 )
 from api.crud.users import get_user_by_email
 
-from api.database import get_db
+from api.db import get_db
 from api.db.models import User
 
 logger = logging.getLogger("irapi")

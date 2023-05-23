@@ -18,6 +18,7 @@ fastapi server receiving, managing and sending ir signals
     │   │   ├── signals.py        # signal crud operations
     │   │   └── users.py          # user crud operations
     │   ├── db                    # database
+    │   │   ├── __init__.py       # create async db session
     │   │   └── models.py         # db models
     │   ├── routers               # object endpoints
     │   │   ├── auth.py           # auth endpoints
@@ -25,7 +26,6 @@ fastapi server receiving, managing and sending ir signals
     │   │   ├── signals.py        # signal endpoints
     │   │   └── users.py          # user crud operations
     │   ├─- __init__.py           # create and config app
-    │   ├─- database.py           # create async db session
     │   └─- schemes.py            # pydantic schemes
     ├── test                      # fastapi app
     │   ├── auth                  # auth tests

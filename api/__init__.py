@@ -4,7 +4,7 @@ from fastapi import FastAPI, APIRouter
 from rich.logging import RichHandler
 
 from api.core.config import settings
-from api.database import async_engine
+from api.db import async_engine
 from api.db.models import Base
 
 FORMAT = "%(message)s"

@@ -12,7 +12,7 @@ from api.crud.devices import (
     get_devices,
     update_device,
 )
-from api.database import get_db
+from api.db import get_db
 
 logger = logging.getLogger("irapi")
 
